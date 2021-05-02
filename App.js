@@ -1,49 +1,43 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import * as React from 'react';
+import { View, Text,Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const styles =StyleSheet.create(
-   {
-      container:{
-         backgroundColor:"white",
-         flex: 1,
-         flexDirection:"row",
-         justifyContent:"space-around",
-         alignItems:"center",
-         opacity:80
-      },
-      box:{
-         justifyContent:"space-around",
-         alignItems:"center",
-         backgroundColor:"blue",
-         width:80,
-         height:80,
+import Squares, { styles } from './src/pages/squares';
+import Names from './src/pages/names';
+function HomeScreen({ navigation }) {
+  return (
+    <View style={styles.container1}>
+      <Button style={styles.button}
+        title="Go to Challenge 1"
+        color="#9400d3"
+        onPress={() => navigation.navigate('challenge1')}
+      />
+       <View style={styles.spacesmall} />
+      <Button style={styles.button}
+        title="Go to Challenge 2"
+        color="#9400d3"
+        onPress={() => navigation.navigate('challenge2')}
+      />
+    </View>
+  );
+}
 
+const Stack = createStackNavigator();
 
-      },
-      text:{
-         color:"white",
-      }
-   }
-)
+function App() {
 
-export default ()=>{
-   return (
-      <View style={styles.container}>
-         <View style={[styles.box,{backgroundColor:"orange"}]}>
-            <Text style={styles.text}>
-               1
-            </Text>
-         </View>
-         <View style={[styles.box,{backgroundColor:"green"}]}>
-            <Text style={styles.text}>
-               2
-            </Text>
-         </View>
-         <View style={styles.box}>
-            <Text style={styles.text}>
-               3
-            </Text>
-         </View>
-      </View>
-   );
-};
+  return (
+    <NavigationContainer>
+
+      <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="challenge1" component={Squares} />
+      <Stack.Screen name="challenge2" component={Names} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
