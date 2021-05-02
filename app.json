@@ -1,0 +1,12 @@
+{
+  "name": "my-project-native",
+  "displayName": "my-project-native",
+  "expo": {
+    "name": "my-project-native",
+    "slug": "my-project-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
